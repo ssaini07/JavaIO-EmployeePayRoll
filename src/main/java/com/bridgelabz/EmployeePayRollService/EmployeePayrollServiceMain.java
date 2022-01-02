@@ -1,5 +1,8 @@
 package com.bridgelabz.EmployeePayRollService;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,7 +14,7 @@ public class EmployeePayrollServiceMain {
     public EmployeePayrollServiceMain(ArrayList<EmployeePayroll> employeePayrollDataList) {
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         System.out.println("Welcome to employee payroll service");
         ArrayList<EmployeePayroll> employeePayrollDataList = new ArrayList<>();
         EmployeePayrollServiceMain employeePayrollService =
@@ -19,6 +22,11 @@ public class EmployeePayrollServiceMain {
         Scanner scanner = new Scanner(System.in);
         employeePayrollService.readEmployeePayroll(scanner);
         employeePayrollService.writeEmployeePayroll();
+        //lineCount();
+        //System.out.println("1. for reading the data");
+       // System.out.println("2. for writing the data");
+        //System.out.println("3. for showing the number of entries/count");
+
 
     }
 
@@ -36,4 +44,5 @@ public class EmployeePayrollServiceMain {
         double salary = scanner.nextDouble();
         employeePayrolls.add(new EmployeePayroll(name, id, salary));
     }
-}
+    }
+
