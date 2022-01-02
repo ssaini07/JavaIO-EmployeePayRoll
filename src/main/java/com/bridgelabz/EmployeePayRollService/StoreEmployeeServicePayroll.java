@@ -15,16 +15,15 @@ public class StoreEmployeeServicePayroll {
         //getListOfContacts();
         File txtFile = new File(FILE_NAME);
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter your choice below");
-        int ch;
-        ch = sc.nextInt();
-
+        //System.out.println("Enter your choice below");
+        //int ch;
+       // ch = sc.nextInt();
 
         writeTxtData1(txtFile, getListOfContacts().toString());
         countEntries();
+        readTxtData(txtFile);
     }
-
-
+    //method to write data into the file
     private static void writeTxtData1(File file, String data) {
         try {
             FileWriter fileWriter = new FileWriter(file);
@@ -34,7 +33,7 @@ public class StoreEmployeeServicePayroll {
             e.printStackTrace();
         }
     }
-
+//method to get list of employee
     public static List<EmployeePayroll> getListOfContacts() {
         List<EmployeePayroll> employeePayrolls = new ArrayList<EmployeePayroll>();
         Scanner sc = new Scanner(System.in);
@@ -60,8 +59,18 @@ public class StoreEmployeeServicePayroll {
             System.out.println("Count of employees are: " + count);
         }
     }
-
-
+//method to print or read the record....
+    public static void readTxtData(File file) {
+        try {
+            FileReader fileReader = new FileReader(file);
+            Scanner sc = new Scanner(fileReader);
+            System.out.println("Reading operation ::");
+            System.out.println(sc.nextLine());
+            fileReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 
