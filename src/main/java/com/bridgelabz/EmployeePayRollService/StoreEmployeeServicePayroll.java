@@ -17,12 +17,14 @@ public class StoreEmployeeServicePayroll {
         Scanner sc = new Scanner(System.in);
         //System.out.println("Enter your choice below");
         //int ch;
-       // ch = sc.nextInt();
+        // ch = sc.nextInt();
 
         writeTxtData1(txtFile, getListOfContacts().toString());
         countEntries();
         readTxtData(txtFile);
+        countEntriesOfEmployees();
     }
+
     //method to write data into the file
     private static void writeTxtData1(File file, String data) {
         try {
@@ -33,7 +35,8 @@ public class StoreEmployeeServicePayroll {
             e.printStackTrace();
         }
     }
-//method to get list of employee
+
+    //method to get list of employee
     public static List<EmployeePayroll> getListOfContacts() {
         List<EmployeePayroll> employeePayrolls = new ArrayList<EmployeePayroll>();
         Scanner sc = new Scanner(System.in);
@@ -59,7 +62,8 @@ public class StoreEmployeeServicePayroll {
             System.out.println("Count of employees are: " + count);
         }
     }
-//method to print or read the record....
+
+    //method to print or read the record....
     public static void readTxtData(File file) {
         try {
             FileReader fileReader = new FileReader(file);
@@ -69,6 +73,32 @@ public class StoreEmployeeServicePayroll {
             fileReader.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void countEntriesOfEmployees() {
+        int count = 0;
+
+        try {
+            // create a new file object
+            File file = new File("AddressBookText.txt");
+
+            // create an object of Scanner
+            // associated with the file
+            Scanner sc = new Scanner(file);
+
+            // read each line and
+            // count number of lines
+            while (sc.hasNextLine()) {
+                sc.nextLine();
+                count++;
+            }
+            System.out.println("Total Number of Entries: " + count);
+
+            // close scanner
+            sc.close();
+        } catch (Exception e) {
+            e.getStackTrace();
         }
     }
 }
