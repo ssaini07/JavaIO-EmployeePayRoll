@@ -15,14 +15,49 @@ public class StoreEmployeeServicePayroll {
         //getListOfContacts();
         File txtFile = new File(FILE_NAME);
         Scanner sc = new Scanner(System.in);
-        //System.out.println("Enter your choice below");
-        //int ch;
-        // ch = sc.nextInt();
 
-        writeTxtData1(txtFile, getListOfContacts().toString());
-        countEntries();
-        readTxtData(txtFile);
-        countEntriesOfEmployees();
+        int ch;
+        do {
+            System.out.println("Enter your choice below");
+            System.out.println("1. For write the data");
+
+            System.out.println("2. For read the data");
+            System.out.println("3. For count the entries");
+            System.out.println("4. For count/print lines");
+            System.out.println("5. For exit");
+            ch = sc.nextInt();
+            switch (ch) {
+                case 1:
+
+                    writeTxtData1(txtFile, getListOfContacts().toString());
+                    break;
+                case 2:
+
+                    readTxtData(txtFile);
+                    break;
+                case 3:
+
+                    countEntries();
+                    break;
+                case 4:
+
+                    countLines(txtFile);
+                    break;
+                default:
+
+                    System.out.println("Oops Wrong choice!!!");
+                    break;
+            }
+
+        } while (ch != 0);
+
+
+        // writeTxtData1(txtFile, getListOfContacts().toString());
+        // countEntries();
+        //readTxtData(txtFile);
+
+        //countEntriesOfEmployees();
+        //countLines(txtFile);
     }
 
     //method to write data into the file
@@ -63,7 +98,7 @@ public class StoreEmployeeServicePayroll {
         }
     }
 
-    //method to print or read the record....
+    //method to read the record....
     public static void readTxtData(File file) {
         try {
             FileReader fileReader = new FileReader(file);
@@ -101,6 +136,18 @@ public class StoreEmployeeServicePayroll {
             e.getStackTrace();
         }
     }
+
+    //print the lines in the payroll file.
+
+    public static void countLines(File txtFile) throws IOException {
+        File file = new File("D:\\Employee Payroll Service\\AddressBookText.txt");
+        LineNumberReader lineNumberReader = new LineNumberReader(new FileReader(file));
+        lineNumberReader.skip(Long.MAX_VALUE);
+        int lines = lineNumberReader.getLineNumber();
+        System.out.println("Number of lines: " + lines);
+        lineNumberReader.close();
+    }
+
 }
 
 
